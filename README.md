@@ -1,4 +1,3 @@
-```
 # Optimized-MT64
 
 An optimized Mersenne Twister 64-bit implementation featuring algorithmic improvements and configurable n-bit random number generation.
