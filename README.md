@@ -93,9 +93,13 @@ The ownership and permitted use of the software remain subject to applicable law
 
 ## License
 
-No license has been granted through this repository unless and until a license is explicitly specified.
+This project is licensed under the Apache License 2.0.
 
-Public availability of the source code should not be interpreted as an automatic grant of permission to use, modify, distribute, sublicense, or incorporate the code into other projects.
+You may use, modify, and distribute this software, including for commercial purposes and as part of proprietary software, subject to the terms and conditions of the Apache License 2.0.
+
+See the LICENSE file for the full license text.
+
+SPDX-License-Identifier: Apache-2.0
 
 ## Disclaimer
 
