@@ -17,6 +17,54 @@ This project originated from prior research and development work and is maintain
 - **Configurable n-bit generation:** Dedicated internal generation blocks supporting configurable output bit widths.
 - **Standalone implementation:** Designed for independent development, evaluation, and reproducibility.
 
+## Compilation and Execution
+
+The project includes a shell script, `car.sh`, that compiles and immediately executes
+the specified C or C++ source file.
+
+### Requirements
+- GCC (GNU Compiler Collection)
+- A POSIX-compatible shell
+- Linux or another compatible Unix-like environment
+On Arch Linux, install GCC with:
+```bash
+sudo pacman -S gcc
+```
+
+### Usage
+Compile `main.cpp` using C++17 and execute it:
+```bash
+sh car.sh 17 main.cpp
+```
+This command is equivalent to compiling with the configured optimization
+flags and then running the generated executable:
+```bash
+g++ -std=c++17 -Wall -Wextra -pedantic -O3 \
+    -march=native -mtune=native -funroll-loops \
+    -flto=auto -pipe -msahf \
+    -ffast-math -funsafe-math-optimizations \
+    -fno-math-errno -fno-trapping-math \
+    main.cpp -o main.cpp.x
+```
+```bash
+time ./main.cpp.x
+```
+
+### Optimization Notes
+The script enables aggressive compiler optimizations, including `-O3`,
+loop unrolling, link-time optimization (LTO), and architecture-specific
+tuning through `-march=native` and `-mtune=native`.
+
+Note: The `-march=native` option optimizes the executable for the CPU
+architecture of the machine on which it is compiled. The resulting binary
+may not run on older or different processor architectures.
+
+The `-ffast-math` and related options relax certain floating-point semantics.
+If the implementation relies on strict floating-point behavior, verify
+that these options are appropriate.
+
+The generated executable is not automatically deleted after execution.
+
 ## Prior Research and Development
 
 The algorithmic work underlying this project predates the creation of this public repository and was used in connection with earlier research.
