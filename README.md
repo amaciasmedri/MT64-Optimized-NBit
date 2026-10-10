@@ -54,4 +54,3 @@ Public availability of the source code should not be interpreted as an automatic
 This repository is provided for software documentation, research, and development purposes.
 
 Performance characteristics, statistical properties, and compatibility claims should be evaluated using appropriate benchmarks, statistical tests, and implementation-specific documentation.
-```
