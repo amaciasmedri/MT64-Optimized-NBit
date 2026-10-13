@@ -33,12 +33,14 @@ namespace extra {
 		return 64;
 	}
 
-	[[nodiscard]] static ull system_seed(ush K1/*=0*/, ush K2/*=0*/) {
-		//return 9438923982ULL;
-		ull gamma = ULLONG_MAX
+	[[nodiscard]] static ull system_seed(ush K1, ush K2) noexcept {
+		ull gamma = (ULLONG_MAX
 			- (50ULL * static_cast<ull>(getpid()) + static_cast<ull>(K1) + 10319ULL)
-			* (static_cast<ull>(K2) + 21ULL * static_cast<ull>(time(0)) + 10914ULL);
-		return ((gamma >> 32) ^ (gamma << 32)) | (extra::pow_2bi[65] + 1ULL);
+			* (static_cast<ull>(K2) + 21ULL * static_cast<ull>(time(0)) + 10914ULL))
+			| (extra::pow_2bi[63] + 1ULL);
+		return ((gamma >> 32) ^ (gamma << 32))
+			^ (extra::pow_2bi[K1 % 31] | extra::pow_2bi[K2 % 27]
+			| extra::pow_2bi[getpid() % 33] | extra::pow_2bi[time(0) % 29]);
 	}
 
 };
